@@ -1,6 +1,6 @@
 import axios from "axios";
 import cheerio from "cheerio";
-import { Feed } from "../domain/Feed";
+import { Feed } from "../domain/entities/FeedEntity";
 
 export const scrapeNews = async () => {
   const sources = [

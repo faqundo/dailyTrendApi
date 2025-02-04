@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
-import { FeedModel } from "../domain/Feed";
+import { FeedModel } from "../../domain/entities/FeedEntity";
 import { createFeedValidation, updateFeedValidation } from '../../utils/validation/feed.validation';
-import { CreateFeedUseCase, UpdateFeedUseCase } from '../../../domain/useCases/feed.useCase';
-
+import { ReadFeedsUseCase } from '../../application/usecases/ReadFeedsUseCase';
+import { CreateFeedUseCase } from '../../application/usecases/CreateFeedUseCase';
+import { UpdateFeedUseCase } from '../../application/usecases/UpdateFeedUseCase';
 
 
 export const FeedController = {
@@ -27,18 +28,7 @@ export const FeedController = {
     }
   },
 
-  // Crear una nueva noticia
-  /* async create(req: Request, res: Response) {
-    try {
-      const { title, link, source, publishedAt } = req.body;
-      const feed = new FeedModel({ title, link, source, publishedAt });
-      await feed.save();
-      res.status(201).json(feed);
-    } catch (error) {
-      res.status(400).json({ message: "Error creando feed" });
-    }
-  }, */
-
+  // Crear una noticia
   async create(req: Request, res: Response) {
     try {
       // Validar datos de entrada
@@ -82,4 +72,13 @@ export const FeedController = {
       res.status(400).json({ message: "Error eliminando feed" });
     }
   },
+
+  async readFeeds(req: Request, res: Response) {
+    try {
+      await ReadFeedsUseCase.execute();
+      return res.status(200).json({ message: 'Feeds updated successfully' });
+    } catch (err) {
+      return res.status(500).json({ error: 'Error updating feeds' });
+    }
+  }
 };

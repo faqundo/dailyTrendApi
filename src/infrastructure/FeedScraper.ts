@@ -1,5 +1,5 @@
 import puppeteer from "puppeteer";
-import { Feed } from "../domain/Feed";
+import { Feed } from "../domain/entities/FeedEntity";
 
 export const scrapeNews = async () => {
   const sources = [

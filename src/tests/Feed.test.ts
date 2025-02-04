@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { Feed } from "../domain/Feed";
+import { Feed } from "../domain/entities/FeedEntity";
 
 describe("Modelo Feed", () => {
   it("Debe crear un feed correctamente", () => {
