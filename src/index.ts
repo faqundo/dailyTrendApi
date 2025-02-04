@@ -1,9 +1,13 @@
 import express, { Request, Response } from 'express';
-import { connectDB } from "./infrastructure/database";
-import { scrapeNews } from './infraestructure/FeedScraper';
+import { connectDB } from "./infrastructure/database.ts";
+import { scrapeNews } from './infrastructure/FeedScraper.js';
+import errorHandler from './utils/middlewares/error.middleware';
+import FeedController from './interfaces/FeedController';
 
 const app = express();
 app.use(express.json());
+
+connectDB();
 
 // Rutas API usando el estándar CRUD
 app.get("/feeds", FeedController.index);
@@ -22,5 +26,7 @@ app.get("/scrape", async (_: Request, res: Response) => {
     }
   });
 
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
+app.use(errorHandler);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
