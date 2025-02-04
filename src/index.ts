@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import { connectDB } from "./infrastructure/database.ts";
 import { scrapeNews } from './infrastructure/FeedScraper.js';
 import errorHandler from './utils/middlewares/error.middleware';
-import FeedController from './interfaces/routes/FeedController.js';
+import FeedController from './interfaces/controllers/FeedController.js';
 
 const app = express();
 app.use(express.json());
