@@ -1,6 +1,9 @@
 import { Document, model, Schema } from 'mongoose';
 import { Feed } from '../../domain/entities/FeedEntity';
 
+
+export interface IFeed extends Feed, Document {}
+
 // Esquema de Mongoose
 const feedSchema = new Schema<Feed & Document>(
     {

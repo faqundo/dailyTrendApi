@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
 
 export class ElPaisScraper {
-  static async getSourceName(): string {
+  static async getSourceName(): Promise<string> {
     return 'El Pais';
   }
 

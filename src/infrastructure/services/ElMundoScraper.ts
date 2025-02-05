@@ -2,7 +2,7 @@
 import puppeteer from 'puppeteer';
 
 export class ElMundoScraper {
-  static async getSourceName(): string {
+  static async getSourceName(): Promise<string> {
     return 'El Mundo';
   }
 

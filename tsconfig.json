@@ -5,7 +5,15 @@
       "outDir": "./dist",
       "rootDir": "./src",
       "strict": true,
-      "esModuleInterop": true
-    }
+      "esModuleInterop": true,
+      "allowImportingTsExtensions": true,
+      "emitDeclarationOnly": true,
+      "declaration": true,
+      "declarationDir": "./dist",
+      "skipLibCheck": true,
+      "typeRoots": ["./node_modules/@types"]
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
   }
   
