@@ -6,7 +6,7 @@ import { DeleteFeedUseCase } from '../../application/usecases/DeleteFeedUseCase'
 import { GetFeedByIdUseCase } from '../../application/usecases/GetFeedByIdUseCase';
 import { GetAllFeedsUseCase } from '../../application/usecases/GetAllFeedsUseCase';
 import { UpdateFeedUseCase } from '../../application/usecases/UpdateFeedUseCase';
-
+import { scrapeNews } from '../../infrastructure/FeedScraperExample';
 export const FeedController = {
   // Obtener todas las noticias
   async index(req: Request, res: Response) {
@@ -82,6 +82,16 @@ export const FeedController = {
       return res.status(200).json({ message: 'Feeds updated successfully' });
     } catch (err) {
       return res.status(500).json({ error: 'Error updating feeds' });
+    }
+  },
+
+  async scrape(req: Request, res: Response) {
+    try {
+      await scrapeNews();
+      res.json({ message: "Feeds updated successfully" });
+    } catch (error) {
+      console.error("Error en el scraping:", error);
+      res.status(500).json({ message: "Error en el scraping" });
     }
   }
 };

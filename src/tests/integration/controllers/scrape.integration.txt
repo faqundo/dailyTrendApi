@@ -1,0 +1,16 @@
+import request from 'supertest';
+import app from '../../../../src/index'; // Importa la aplicación Express
+
+/* describe('Scrapers Integration', () => {
+  describe('POST /scrape', () => {
+    it('debería extraer feeds de portada desde El País y El Mundo', async () => {
+      const response = await request(app).post('/scrape').expect(200);
+
+      expect(response.body.message).toBe('Feeds updated successfully');
+
+      // Verificar que se hayan guardado feeds en la base de datos
+      const feedsResponse = await request(app).get('/feeds').expect(200);
+      expect(feedsResponse.body.length).toBeGreaterThan(0); // Debe haber feeds extraídos
+    });
+  });
+}); */

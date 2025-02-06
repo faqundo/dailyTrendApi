@@ -2,7 +2,7 @@ import puppeteer from 'puppeteer';
 
 export class ElPaisScraper {
   static async getSourceName(): Promise<string> {
-    return 'El Pais';
+    return 'El País';
   }
 
   static async scrape(): Promise<any[]> {

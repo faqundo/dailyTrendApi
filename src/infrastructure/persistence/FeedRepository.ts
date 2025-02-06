@@ -9,7 +9,7 @@ const feedSchema = new Schema<Feed & Document>(
     {
       title: { type: String, required: true },
       description: { type: String, required: false },
-      source: { type: String, required: true, enum: ['El Pais', 'El Mundo'] },
+      source: { type: String, required: true, enum: ['El País', 'El Mundo'] },
       url: { type: String, required: true, validate: /https?:\/\/[^\s]+/ },
       createdAt: { type: Date, default: Date.now },
     },

@@ -1,7 +1,7 @@
 export interface Feed {
   title: string;
   description?: string;
-  source: 'El Pais' | 'El Mundo';
+  source: 'El País' | 'El Mundo';
   url: string;
   createdAt?: Date;
 }
@@ -9,14 +9,14 @@ export interface Feed {
 export class FeedEntity implements Feed {
   title: string;
   description?: string;
-  source: 'El Pais' | 'El Mundo';
+  source: 'El País' | 'El Mundo';
   url: string;
   createdAt?: Date;
 
   constructor(data: Partial<Feed>) {
     this.title = data.title || '';
     this.description = data.description;
-    this.source = data.source || 'El Pais';
+    this.source = data.source || 'El País';
     this.url = data.url || '';
     this.createdAt = data.createdAt || new Date();
   }

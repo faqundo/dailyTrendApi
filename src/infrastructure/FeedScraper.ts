@@ -57,7 +57,7 @@ class ElPaisScraper extends NewsScraper {
     return await page.$$eval("article h2 a", (links: any) =>
       links.map((link: any) => ({
         title: link.textContent?.trim() || "",
-        link: link.href || "",
+        url: link.href || "",
       }))
     );
   }
@@ -77,7 +77,7 @@ class ElMundoScraper extends NewsScraper {
     return await page.$$eval(".ue-c-cover-content__link", (links: any) =>
       links.map((link: any) => ({
         title: link.textContent?.trim() || "",
-        link: link.href || "",
+        url: link.href || "",
       }))
     );
   }
@@ -91,3 +91,5 @@ export const scrapeNews = async () => {
     await scraper.scrape();
   }
 };
+
+export { NewsScraper, ElPaisScraper, ElMundoScraper };
