@@ -30,7 +30,7 @@ describe("Scrapers", () => {
     it("debería extraer noticias de El País", async () => {
       const scraper = new ElPaisScraper();
       const page = await puppeteer.launch().then((browser) => browser.newPage());
-
+      console.log("TEST2: ", page);
       const articles = await scraper.extractArticles(page);
 
       expect(articles.length).toBeGreaterThan(0);

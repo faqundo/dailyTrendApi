@@ -1,6 +1,5 @@
 import express, { Request, Response } from 'express';
 import { connectDB } from "./infrastructure/database.ts";
-import { scrapeNews } from './infrastructure/FeedScraper.ts';
 import errorHandler from './utils/middlewares/error.middleware.ts';
 import FeedController from './interfaces/controllers/FeedController.ts';
 

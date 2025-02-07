@@ -14,9 +14,10 @@ abstract class NewsScraper {
     const page = await browser.newPage();
 
     try {
+      console.log(`Visitando ${this.getBaseUrl()}`);
       await page.goto(this.getBaseUrl(), { waitUntil: "networkidle2" });
       const articles = await this.extractArticles(page);
-
+      console.log('Extrayendo artículos...', articles);
       if (!articles || articles.length === 0) {
         console.warn(`No se encontraron artículos en ${this.getSourceName()}`);
         return;
@@ -27,6 +28,7 @@ abstract class NewsScraper {
 
       for (const article of limitedArticles) {
         if (article.title && article.link) {
+          console.log('Guardando artículo...', article.title, article.link);
           await FeedModel.create({
             title: article.title,
             url: article.link,
@@ -39,6 +41,10 @@ abstract class NewsScraper {
       console.error(`Error al scraping ${this.getSourceName()}:`, error);
     } finally {
       await browser.close();
+      /* setTimeout(async () => {
+        await browser.close();
+        console.log('Navegador cerrado');
+      }, 10000); */
     }
   }
 }

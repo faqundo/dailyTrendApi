@@ -11,6 +11,7 @@ export const FeedController = {
   // Obtener todas las noticias
   async index(req: Request, res: Response) {
     try {
+      console.log("Getting all feeds...");
       const feeds = await GetAllFeedsUseCase.execute();
       res.json(feeds);
     } catch (error) {
@@ -87,6 +88,7 @@ export const FeedController = {
 
   async scrape(req: Request, res: Response) {
     try {
+      console.log("Scraping...");
       await scrapeNews();
       res.json({ message: "Feeds updated successfully" });
     } catch (error) {
